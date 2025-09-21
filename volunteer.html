@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer - Sataakshi NGO</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#111; color:#f5f5f5; overflow-x:hidden; }
+    header { background:#000; color:#FFD700; padding:1em; position:sticky; top:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-weight:bold; font-size:1.2em; text-decoration:none; color:#FFD700; margin-right:1em; }
+    .menu-toggle { font-size:1.5em; cursor:pointer; color:#FFD700; margin-left:1em; }
+
+    /* Sidebar */
+    .sidebar { height:100%; width:0; position:fixed; top:0; right:0; background:#222; overflow-x:hidden;
+                transition:0.5s; padding-top:60px; z-index:1000; }
+    .sidebar a { display:block; padding:12px 20px; text-decoration:none; color:#FFD700; transition:0.3s; opacity:0; transform:translateX(30px); }
+    .sidebar a.show { opacity:1; transform:translateX(0); transition: all 0.5s ease; }
+    .sidebar a:hover { background:#333; padding-left:30px; color:#fff; }
+    .sidebar .closebtn { position:absolute; top:10px; left:15px; font-size:2em; text-decoration:none; color:#FFD700; }
+
+    main { max-width: 900px; margin: 2em auto; padding: 1.5em; background: #1a1a1a; color: #f5f5f5; border-radius: 8px; line-height: 1.8; }
+    main h1 { text-align: center; color: #FFD700; margin-bottom: 1em; animation: fadeInDown 1s ease; }
+    .volunteer-info { margin:1.5em 0; }
+    .volunteer-info ul li { margin: 0.5em 0; opacity:0; transform:translateX(-20px); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow:hidden; }
+    .volunteer-info ul li.visible { animation: slideIn 0.6s forwards; }
+    .volunteer-info ul li:hover { transform: scale(1.03); box-shadow: 0 0 10px rgba(255,215,0,0.6); border-radius: 4px; }
+
+    /* Ripple effect */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 0.6s linear;
+      background: rgba(255, 215, 0, 0.6);
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    .highlight { color:#FFD700; font-weight:bold; }
+    .volunteer-contact { margin-top: 1.5em; padding: 1em; background: rgba(255,215,0,0.1); border-radius: 6px; color: #FFD700; font-weight: bold; text-align:center; animation: fadeInUp 1.5s ease; }
+    .cta-button { display:inline-block; margin-top:1em; padding:0.6em 1.2em; background:#FFD700; color:#000; font-weight:bold; border-radius:4px; text-decoration:none; transition: transform 0.3s ease; }
+    .cta-button:hover { transform: scale(1.1); }
+
+    footer { background:#000; color:#FFD700; text-align:center; padding:1em; margin-top:2em; animation: fadeIn 2s ease; }
+
+    /* Animations */
+    @keyframes slideIn {
+      to { opacity:1; transform:translateX(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity:0; transform:translateY(30px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity:0; transform:translateY(-30px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity:0; }
+      to { opacity:1; }
+    }
+  </style>
+</head>
+<body>
+
+<header role="banner">
+  <a href="index.html" class="logo">Sataakshi</a>
+  <span class="menu-toggle" onclick="openNav()">☰</span>
+</header>
+
+<nav id="mySidebar" class="sidebar" aria-label="Main navigation">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="about.html">About</a>
+  <a href="causes.html">Causes</a>
+  <a href="projects.html">Projects</a>
+  <a href="events.html">Events</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="volunteer.html">Volunteer</a>
+  <a href="donate.html">Donate</a>
+  <a href="contact.html">Contact</a>
+  <a href="blog.html">Blog</a>
+  <a href="founder.html">Founder</a>
+  <a href="creator.html">Creator</a>
+</nav>
+
+<main>
+  <h1>🙏 स्वयंसेवक बनें</h1>
+
+  <p>
+    यदि आप समाज में बदलाव लाना चाहते हैं और <span class="highlight">सताक्षी</span> के मिशन का हिस्सा बनना चाहते हैं, तो आपके लिए यह सही अवसर है।
+    स्वयंसेवक (Volunteer) के रूप में आप शिक्षा, स्वास्थ्य, भोजन सेवा, महिला सशक्तिकरण और पर्यावरण संरक्षण जैसे कार्यों में योगदान दे सकते हैं।
+  </p>
+
+  <div class="volunteer-info">
+    <h2>आप कैसे मदद कर सकते हैं?</h2>
+    <ul>
+      <li>बच्चों को पढ़ाने और उन्हें नई दिशा देने में सहयोग करें।</li>
+      <li>“अन्नपूर्णा रसोई” के माध्यम से जरूरतमंदों तक भोजन पहुँचाने में मदद करें।</li>
+      <li>ग्रामीण क्षेत्रों में जागरूकता अभियान का हिस्सा बनें।</li>
+      <li>महिला और बालिकाओं के सशक्तिकरण के लिए काम करें।</li>
+      <li>आपातकालीन सेवाओं और हेल्पलाइन में सहयोग दें।</li>
+      <li>समाज में रक्तदान शिविर और स्वास्थ्य जांच कैम्प आयोजित करने में सहयोग करें।</li>
+      <li>बाढ़ और प्राकृतिक आपदाओं में राहत कार्य का हिस्सा बनें।</li>
+      <li>पर्यावरण बचाने के लिए वृक्षारोपण और स्वच्छता अभियान चलाएँ।</li>
+      <li>जरूरतमंद छात्रों के लिए स्टेशनरी, कपड़े और अन्य सामग्री एकत्रित करें।</li>
+      <li>एनजीओ के डिजिटल कार्य और जागरूकता सामग्री साझा करने में मदद करें।</li>
+    </ul>
+  </div>
+
+  <p>
+    आपका <span class="highlight">थोड़ा सा समय और प्रयास</span> किसी के जीवन में बड़ी रोशनी ला सकता है। हमारे साथ जुड़कर आप भी इस परिवर्तन यात्रा का हिस्सा बन सकते हैं。
+  </p>
+
+  <div class="volunteer-contact">
+    🙌 यदि आपके समाज या क्षेत्र में कोई काम हो, तो हमें मदद करने का अवसर दें। चलिए मिलकर बदलाव की एक नई शुरुआत करते हैं।<br><br>
+    📞 स्वयंसेवक बनने या किसी भी प्रकार की जानकारी के लिए संपर्क करें: <span class="highlight">+91 7992188234</span>
+    <br>
+    <a href="contact.html" class="cta-button">हमसे जुड़ें</a>
+    <a href="https://wa.me/917992188234" target="_blank" class="cta-button">WhatsApp से जुड़ें</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Sataakshi NGO. All rights reserved.</p>
+</footer>
+
+<script>
+function openNav() {
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "250px";
+  document.body.style.overflow = "hidden";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach((link, i) => {
+    setTimeout(() => link.classList.add("show"), i * 100);
+  });
+}
+function closeNav() {
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "0";
+  document.body.style.overflow = "auto";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach(link => link.classList.remove("show"));
+}
+
+// Scroll-based animation for list items
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.volunteer-info ul li').forEach((li, index) => {
+  observer.observe(li);
+  li.style.animationDelay = `${index * 0.2}s`;
+
+  // Ripple on click
+  li.addEventListener('click', function(e) {
+    const circle = document.createElement('span');
+    circle.classList.add('ripple');
+    const rect = li.getBoundingClientRect();
+    circle.style.width = circle.style.height = Math.max(rect.width, rect.height) + 'px';
+    circle.style.left = e.clientX - rect.left - (rect.width/2) + 'px';
+    circle.style.top = e.clientY - rect.top - (rect.height/2) + 'px';
+    li.appendChild(circle);
+    setTimeout(() => circle.remove(), 600);
+  });
+});
+</script>
+
+</body>
+</html>

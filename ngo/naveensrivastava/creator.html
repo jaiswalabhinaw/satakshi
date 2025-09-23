@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator - Shatakshi NGO</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#111; color:#f5f5f5; overflow-x:hidden; }
+    header { background:#000; color:#FFD700; padding:1em; position:sticky; top:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-weight:bold; font-size:1.2em; text-decoration:none; color:#FFD700; margin-right:1em; }
+    .menu-toggle { font-size:1.5em; cursor:pointer; color:#FFD700; margin-left:1em; }
+
+    /* Sidebar */
+    .sidebar { height:100%; width:0; position:fixed; top:0; right:0; background:#222; overflow-x:hidden;
+                transition:0.5s; padding-top:60px; z-index:1000; }
+    .sidebar a { display:block; padding:12px 20px; text-decoration:none; color:#FFD700; transition:0.3s; opacity:0; transform:translateX(30px); }
+    .sidebar a.show { opacity:1; transform:translateX(0); transition: all 0.5s ease; }
+    .sidebar a:hover { background:#333; padding-left:30px; color:#fff; }
+    .sidebar .closebtn { position:absolute; top:10px; left:15px; font-size:2em; text-decoration:none; color:#FFD700; }
+
+    main { max-width: 900px; margin: 2em auto; padding: 1.5em; background: #1a1a1a; color: #f5f5f5; border-radius: 8px; line-height: 1.8; }
+    main h1 { text-align: center; color: #FFD700; margin-bottom: 1em; }
+    .creator-contact { margin-top: 1.5em; padding: 0.8em; background: rgba(255,215,0,0.1); border-radius: 6px; display: inline-block; color: #FFD700; font-weight: bold; }
+
+    footer { background:#000; color:#FFD700; text-align:center; padding:1em; margin-top:2em; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">Shatakshi</a>
+  <span class="menu-toggle" onclick="openNav()">☰</span>
+</header>
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="about.html">About</a>
+  <a href="causes.html">Causes</a>
+  <a href="projects.html">Projects</a>
+  <a href="events.html">Events</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="volunteer.html">Volunteer</a>
+  <a href="donate.html">Donate</a>
+  <a href="contact.html">Contact</a>
+  <a href="blog.html">Blog</a>
+  <a href="founder.html">Founder</a>
+  <a href="creator.html">Creator</a>
+</div>
+
+<main>
+  <h1>✨ वेबसाइट निर्माता का संदेश</h1>
+  
+  <p>
+    मैं, <strong>अभिनव</strong>, पिछले 17 वर्षों से <strong>नवीन श्रीवास्तव</strong> जी के साथ जुड़ा हुआ हूँ। हमारी यह यात्रा स्नातक के बाद साथ में करियर की तैयारी से शुरू हुई, एक साथ रहना, एक साथ बढ़ना और जीवन के हर पड़ाव पर सहयोग और मार्गदर्शन पाना—इन सभी अनुभवों ने मुझे आज जो हूँ, वह बनाया है।
+  </p>
+
+  <p>
+    आज इस मिशन के लिए वेबसाइट बनाते हुए और सताक्षी की 17 वर्ष की इस अद्भुत यात्रा को संजोते हुए मुझे ऐसा महसूस हो रहा है मानो मैं 17 वर्षों की एक जीवनी को शब्दों में उतार रहा हूँ। चूँकि मैं नवीन जी का निजी जीवन-संगी रहा हूँ, उनकी संघर्ष और साधना को करीब से देखा है, इसलिए मुझे लगता है कि उनके जीवन का असली सार किसी और से बेहतर मैं ही इस डिजिटल रूप में प्रस्तुत कर सकता हूँ।
+  </p>
+
+  <p>
+    इस काम को करते हुए मुझे गर्व है कि मैं इस महान मिशन का हिस्सा हूँ। यदि इस डिजिटल प्रयास से एक भी व्यक्ति को लाभ होता है, तो मेरा जीवन सफल होगा। मैं इस कार्य को <strong>100% समर्पण</strong> के साथ कर रहा हूँ। आज तक मुझे कभी भी ऐसा संतोष किसी काम से नहीं मिला। मैं दिन-रात लगातार बिना थके काम कर रहा हूँ, क्योंकि नवीन जी ने भी पिछले 17 वर्षों से इसी तरह बिना रुके मानवता की सेवा की है। मेरे प्रयास उनकी तपस्या के सामने कुछ भी नहीं हैं, लेकिन मेरे लिए यह "मुक्ति का द्वार" है।
+  </p>
+
+  <p>
+    मैं भविष्य में भी ऐसे ही सामाजिक संगठनों की वेबसाइट बनाने और उनकी आत्मा को डिजिटल स्वरूप देने के लिए समर्पित रहूँगा। यह मेरे लिए सिर्फ एक काम नहीं बल्कि जीवन की साधना है।
+  </p>
+
+  <p style="margin-top:1em; font-weight:bold; color:#FFD700;">— अभिनव</p>
+
+  <div class="creator-contact">
+    किसी भी प्रकार की मदद और सहयोग के लिए मुझसे सीधे संपर्क करें: 📞 +91 7992188234
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Shatakshi NGO. All rights reserved.</p>
+</footer>
+
+<script>
+function openNav() {
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "250px";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach((link, i) => {
+    setTimeout(() => link.classList.add("show"), i * 100);
+  });
+}
+function closeNav() {
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "0";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach(link => link.classList.remove("show"));
+}
+</script>
+
+</body>
+</html>

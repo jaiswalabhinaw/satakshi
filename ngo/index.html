@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shatakshi Educational & Welfare Trust</title>
+  <meta name="description" content="Shatakshi Seva Sansthan — serving dignity, education & health in Gopalganj, Bihar." />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">Shatakshi Seva Sansthan</div>
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#founder">Founder</a>
+    <a href="#work">Our Work</a>
+    <a href="#causes">Objectives</a>
+    <a href="#impact">Impact</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#get-involved">Get Involved</a>
+    <a href="#donate" class="btn-primary">Donate</a>
+    <a href="#events">Events</a>
+    <a href="#resources">Resources</a>
+    <a href="#media">Media</a>
+    <a href="#shop">Shop</a>
+    <a href="#volunteer-stories">Volunteer Stories</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <a href="#team">Team</a>
+    <a href="#trust">Legal & Trust</a>
+  </nav>
+
+  <!-- Hamburger -->
+  <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
+
+  <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+  <a href="#home" onclick="toggleMenu()">Home</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#founder" onclick="toggleMenu()">Founder</a>
+  <a href="#work" onclick="toggleMenu()">Our Work</a>
+  <a href="#causes" onclick="toggleMenu()">Objectives</a>
+  <a href="#impact" onclick="toggleMenu()">Impact</a>
+  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="#get-involved" onclick="toggleMenu()">Get Involved</a>
+  <a href="#donate" class="btn-primary" onclick="toggleMenu()">Donate</a>
+  <a href="#events" onclick="toggleMenu()">Events</a>
+  <a href="#resources" onclick="toggleMenu()">Resources</a>
+  <a href="#media" onclick="toggleMenu()">Media</a>
+  <a href="#shop" onclick="toggleMenu()">Shop</a>
+  <a href="#volunteer-stories" onclick="toggleMenu()">Volunteer Stories</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#team" onclick="toggleMenu()">Team</a>
+  <a href="#trust" onclick="toggleMenu()">Legal & Trust</a>
+</div>
+
+</header>
+
+
+<!-- HERO Slideshow -->
+<section id="home" class="hero fade-in" 
+  style="position: relative; height: 70vh; display: flex; align-items: flex-end; justify-content: center; text-align: center; color: #fff; overflow: hidden;">
+
+  <!-- Gradient Overlay -->
+  <div style="
+    position:absolute; 
+    top:0; left:0; width:100%; height:100%; 
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 25%, rgba(0,0,0,0) 70%);
+    z-index:1;">
+  </div>
+
+  <!-- Content (lowered for faces visibility) -->
+  <div class="hero-inner container" style="
+    position: relative; 
+    z-index: 2; 
+    max-width: 700px; 
+    padding: 2rem 1.5rem 3rem; 
+    margin-bottom: 1rem; 
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 1.5s ease, transform 1.5s ease;">
+    
+    <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">
+      Service with Dignity, Compassion, and Hope
+    </h1>
+    <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+      Shatakshi NGO stands for education, food, healthcare, and dignified last rites.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <a href="#donate" 
+         style="background:#E53935; color:#fff; padding:0.7rem 1.4rem; border-radius:6px; text-decoration:none; font-weight:600;">
+        Donate Now
+      </a>
+      <a href="#get-involved" 
+         style="background:#fff; color:#E53935; border:2px solid #E53935; padding:0.7rem 1.4rem; border-radius:6px; text-decoration:none; font-weight:600;">
+        Join Us
+      </a>
+    </div>
+  </div>
+
+  <!-- Slideshow container -->
+  <div id="slideshow" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;"></div>
+</section>
+
+<script>
+  window.onload = function() {
+    // ---------- IMAGES SLIDESHOW ----------
+    const files = [
+      "PHOTO-2025-09-11-08-58-25%202.jpg",
+      "PHOTO-2025-09-11-08-56-28.jpg",
+      "PHOTO-2025-09-11-08-58-39%202.jpg",
+      "PHOTO-2025-09-11-08-58-32.jpg",
+      "PHOTO-2025-09-11-08-56-42%202.jpg",
+      "PHOTO-2025-09-11-08-50-24%202.jpg",
+      "PHOTO-2025-09-11-08-47-50.jpg",
+      "PHOTO-2025-09-11-08-47-37%202.jpg",
+      "PHOTO-2025-09-11-08-58-42.jpg",
+      "PHOTO-2025-09-11-08-58-41.jpg"
+    ];
+
+    const slideshow = document.getElementById("slideshow");
+    let current = 0;
+
+    files.forEach((file, i) => {
+      let img = document.createElement("img");
+      img.src = `images/${file}`;
+      img.style = `
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position: top;
+        position:absolute;
+        top:0;
+        left:0;
+        opacity:0;
+        transition: opacity 1s;
+      `;
+      if (i === 0) img.style.opacity = 1;
+      slideshow.appendChild(img);
+    });
+
+    const slides = slideshow.querySelectorAll("img");
+    setInterval(() => {
+      slides[current].style.opacity = 0;
+      current = (current + 1) % slides.length;
+      slides[current].style.opacity = 1;
+    }, 4000);
+
+    // ---------- TEXT FADE-IN ----------
+    const heroContent = document.querySelector(".hero-inner");
+    setTimeout(() => {
+      heroContent.style.opacity = 1;
+      heroContent.style.transform = "translateY(0)";
+    }, 500); // start fade-in after 0.5s
+  }
+</script>
+
+
+
+<!-- ABOUT SECTION -->
+<section id="about" class="fade-in" style="padding:60px 20px; background:#f9f9f9;">
+  <div style="display:flex; flex-wrap:wrap; align-items:center; gap:40px; max-width:1200px; margin:auto;">
+    
+    <!-- Image -->
+    <div style="flex:1; min-width:300px; display:flex; justify-content:center;">
+      <img src="images/PHOTO-2025-09-11-08-58-42.jpg" alt="Shatakshi NGO" 
+           style="width:100%; max-width:450px; max-height:350px; object-fit:cover; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.2);">
+    </div>
+
+    <!-- Content -->
+    <div style="flex:2; min-width:300px;">
+      <h2 style="font-size:2rem; margin-bottom:1rem; color:#0d47a1;">About Us</h2>
+      <p style="font-size:1.1rem; margin-bottom:1rem; line-height:1.6;">
+        At <strong>Shatakshi NGO</strong>, we believe every life deserves dignity, compassion, and hope. 
+        From providing free last rites to delivering education, healthcare, and meals, our journey 
+        is built on selfless service and community support.We are Gopalganj-based well-known and reputed NGO namely Shatakshi Educational and Welfare Trust Registered under Trust Registration Act XXI of 1872, which has been discharging a leading role to promote dignity and sustainable development for all through extensive services in different areas of social sector such as health, education, human development and related fields for the last one decade.
+      </p>
+
+      <!-- Mission & Vision -->
+      <h3 style="margin-top:1.5rem; color:#E53935;">Our Mission</h3>
+      <p>To empower individuals and families through education, healthcare, and dignified end-of-life support.</p>
+
+      <h3 style="margin-top:1.5rem; color:#E53935;">Our Vision</h3>
+      <p>A society where no one is left behind — where dignity, compassion, and opportunity are for all.</p>
+
+      <!-- Featured Quote -->
+      <div style="margin-top:2rem; padding:1.5rem; border-left:5px solid #E53935; background:#fff; font-style:italic; box-shadow:0 4px 15px rgba(0,0,0,0.1); border-radius:8px;">
+        <p style="font-size:1.1rem; line-height:1.6; color:#333;">
+          “Service to humanity is the rent we pay for our room on Earth. We are the hands that give dignity to the forgotten, 
+          a final farewell to those left alone, and hope to the community in its darkest hours. 
+          Our work is a testament to the belief that every life, no matter how quiet its end, deserves respect and remembrance.”
+        </p>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <a href="about.html" style="background:#E53935; color:#fff; padding:0.8rem 1.6rem; border-radius:6px; text-decoration:none; font-weight:600;">Read More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- PHILOSOPHY & SERVICES -->
+<section id="philosophy" style="padding:80px 20px; background:#f3f6fb; color:#333; text-align:center;">
+  
+  <!-- Philosophy Quote -->
+  <div style="max-width:900px; margin:auto; margin-bottom:50px;">
+    <h2 style="font-size:2rem; margin-bottom:1.5rem; color:#0d47a1;">Our Philosophy</h2>
+    <p style="font-size:1.2rem; line-height:1.8; font-style:italic; color:#444;">
+      At <strong>Shatakshi Seva Sansthan</strong>, our philosophy rests on the belief that dignity is a universal right — one that extends beyond life into death. 
+      Guided by the principle of <em>“Seva Parmo Dharma”</em> (Service is our highest religion), this is not just a motto, but the cornerstone of everything we do.
+      <br><br>
+      We step in where society often looks away — with the unclaimed, the vulnerable, and the forgotten. 
+      By performing proper last rites for unclaimed bodies, we restore a fundamental piece of humanity. 
+      This act of compassion is our truest statement: that every life has value, and every individual, regardless of circumstances, deserves honor and remembrance.
+      <br><br>
+      Yet our philosophy goes beyond the final journey. 
+      We are equally committed to serving the living — responding to emergencies, feeding the hungry, educating children, and supporting the elderly. 
+      From offering free education and meals to extending a helping hand during crises, our goal is to act as a safety net and a source of hope.
+      <br><br>
+      For us, service is a continuous act of faith in humanity. 
+      It is the belief that through selfless action, we can create a society where every person feels seen, valued, and cared for.
+    </p>
+  </div>
+
+  <!-- Services Grid -->
+  <div style="max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
+
+    <!-- Funeral Service -->
+    <div style="flex:1; min-width:250px; background:#fff; color:#333; padding:20px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); text-align:left;">
+      <img src="images/PHOTO-2025-09-11-08-58-25 2.jpg" alt="Funeral Service" style="width:100%; border-radius:8px; margin-bottom:15px; max-height:180px; object-fit:cover;">
+      <h3 style="color:#E53935; margin-bottom:10px;">Dignified Funeral Services</h3>
+      <p style="line-height:1.6;">We perform free, respectful last rites for those without family support — ensuring dignity and compassion in life’s final farewell.</p>
+    </div>
+
+    <!-- Elderly Care  -->
+    <div style="flex:1; min-width:250px; background:#fff; color:#333; padding:20px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); text-align:left;">
+      <img src="images/PHOTO-2025-09-11-08-56-28.jpg" alt="Elderly Care" style="width:100%; border-radius:8px; margin-bottom:15px; max-height:180px; object-fit:cover;">
+      <h3 style="color:#0d47a1; margin-bottom:10px;">24/7 Elderly Care</h3>
+      <p style="line-height:1.6;">We perform free, respectful last rites for those without family support — ensuring dignity and compassion in life’s final farewell.</p>   
+    </div>
+
+    <!-- Annapurna Rasoi -->
+    <div style="flex:1; min-width:250px; background:#fff; color:#333; padding:20px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); text-align:left;">
+      <img src="images/PHOTO-2025-09-11-08-58-39 2.jpg" alt="Annapurna Rasoi" style="width:100%; border-radius:8px; margin-bottom:15px; max-height:180px; object-fit:cover;">
+      <h3 style="color:#43a047; margin-bottom:10px;">24*7 Ambulence Care</h3>
+      <p style="line-height:1.6;"></p>We extend dignity and companionship to the elderly, ensuring they are valued, respected, and never left behind.
+    </div>
+
+    <!-- Education for Children -->
+    <div style="flex:1; min-width:250px; background:#fff; color:#333; padding:20px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); text-align:left;">
+      <img src="images/PHOTO-2025-09-11-08-58-32.jpg" alt="Education" style="width:100%; border-radius:8px; margin-bottom:15px; max-height:180px; object-fit:cover;">
+      <h3 style="color:#ff9800; margin-bottom:10px;">Education for Children</h3>
+      <p style="line-height:1.6;">We support underprivileged children with free education, books, and mentorship — empowering them with knowledge and opportunity.</p>
+    </div>
+
+    <!-- Annpoorna Raosi -->
+    <div style="flex:1; min-width:250px; background:#fff; color:#333; padding:20px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); text-align:left;">
+      <img src="images/PHOTO-2025-09-11-08-56-42 2.jpg" alt="Elderly Care" style="width:100%; border-radius:8px; margin-bottom:15px; max-height:180px; object-fit:cover;">
+      <h3 style="color:#6a1b9a; margin-bottom:10px;">Annpoorna Raosi</h3>
+      <p style="line-height:1.6;">Our round-the-clock ambulance service ensures that urgent medical help and dignified transportation are always available.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- IMPACT HIGHLIGHTS -->
+<section style="background:#fff; padding:40px 20px;">
+  <div style="max-width:1000px; margin:auto; display:flex; flex-wrap:wrap; justify-content:space-around; text-align:center; gap:20px;">
+    
+    <div style="flex:1; min-width:200px;">
+      <h2 style="font-size:2rem; color:#E53935; margin-bottom:0.5rem;">900+</h2>
+      <p style="font-size:1rem; color:#444;">Dignified Last Rites</p>
+    </div>
+    
+    <div style="flex:1; min-width:200px;">
+      <h2 style="font-size:2rem; color:#0d47a1; margin-bottom:0.5rem;">800+</h2>
+      <p style="font-size:1rem; color:#444;">Children Supported</p>
+    </div>
+    
+    <div style="flex:1; min-width:200px;">
+      <h2 style="font-size:2rem; color:#43a047; margin-bottom:0.5rem;">42+</h2>
+      <p style="font-size:1rem; color:#444;">Meals Served Daily</p>
+    </div>
+    
+    <div style="flex:1; min-width:200px;">
+      <h2 style="font-size:2rem; color:#ff9800; margin-bottom:0.5rem;">24/7</h2>
+      <p style="font-size:1rem; color:#444;">Ambulance Service</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- FOUNDER SECTION -->
+<section id="founder" style="padding:80px 20px; background:#fff; color:#333;">
+  <div style="max-width:1100px; margin:auto; display:flex; flex-wrap:wrap; align-items:center; gap:40px;">
+    
+    <!-- Founder Slideshow -->
+    <div style="flex:1; min-width:280px; text-align:center; position:relative;">
+      <div id="founder-slideshow" style="width:100%; max-width:320px; height:320px; margin:auto; border-radius:50%; overflow:hidden; border:5px solid #f3f6fb; box-shadow:0 6px 25px rgba(0,0,0,0.2); position:relative;">
+        <!-- Images will load here via JS -->
+      </div>
+    </div>
+
+    <!-- Founder Content -->
+    <div style="flex:2; min-width:300px;">
+      <h2 style="font-size:2rem; margin-bottom:1rem; color:#0d47a1;">Our Founder</h2>
+      <h3 style="font-size:1.3rem; margin-bottom:1rem; color:#E53935;">Mr. Naveen Ranjan Srivastava</h3>
+
+      <p style="font-size:1.05rem; line-height:1.8; margin-bottom:1rem; color:#444;">
+        Born in <strong>Manikpur village, Gopalganj, Bihar</strong>, Mr. Srivastava grew up witnessing the struggles of rural life. 
+        With dreams of joining the IAS, he moved to <strong>Prayagraj (Allahabad)</strong> for higher studies. 
+      </p>
+
+      <p style="font-size:1.05rem; line-height:1.8; margin-bottom:1rem; color:#444;">
+        But tragedy struck when he lost his younger brother. In searching for his brother’s body, 
+        he came across the heartbreaking sight of <strong>unclaimed, decomposed corpses</strong>. 
+        This traumatic experience, along with guidance from his spiritual mentor, reshaped his destiny. 
+        He chose not bureaucracy, but <strong>a life of service</strong>.
+      </p>
+
+      <blockquote style="font-size:1.1rem; font-style:italic; color:#0d47a1; border-left:4px solid #E53935; padding-left:15px; margin:20px 0;">
+        "Service is not a choice, it is my duty. Every life deserves respect, dignity, and remembrance."
+      </blockquote>
+
+      <p style="color:#666;">— Founder, Shatakshi Seva Sansthan</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  window.addEventListener("load", function() {
+    const founderImages = [
+      "PHOTO-2025-09-11-08-58-26.jpg",
+      "PHOTO-2025-09-11-08-58-25 2.jpg",
+      "PHOTO-2025-09-11-23-22-55.jpg",
+      "PHOTO-2025-09-11-08-58-43.jpg",
+      "PHOTO-2025-09-11-08-58-42.jpg",
+      "PHOTO-2025-09-11-08-47-41 2.jpg",
+      "PHOTO-2025-09-11-08-47-33.jpg"
+    ];
+
+    const slideshow = document.getElementById("founder-slideshow");
+
+    founderImages.forEach((file, i) => {
+      let img = document.createElement("img");
+      img.src = `images/founder/${file}`;
+      img.style = `
+        width:100%; height:100%;
+        object-fit:cover; object-position:center;
+        position:absolute; top:0; left:0;
+        opacity:0; transition:opacity 1s;
+      `;
+      if (i === 0) img.style.opacity = 1;
+      slideshow.appendChild(img);
+    });
+
+    const slides = slideshow.querySelectorAll("img");
+    let current = 0;
+    setInterval(() => {
+      slides[current].style.opacity = 0;
+      current = (current + 1) % slides.length;
+      slides[current].style.opacity = 1;
+    }, 4000);
+  });
+</script>
+
+
+  <!-- Founder Values -->
+  <div style="max-width:900px; margin:auto; margin-top:50px; text-align:center;">
+    <h3 style="font-size:1.5rem; margin-bottom:1rem; color:#6a1b9a;">Personality and Values</h3>
+    <p style="line-height:1.7; color:#444;">
+      Mr. Srivastava’s life is a symbol of compassion, courage, and sacrifice. Even in the toughest circumstances, 
+      he remains committed to serving society. His wife, <strong>Mrs. Shipli Saxena</strong>, his family’s guidance, 
+      and society’s trust give him the strength to continue his mission.  
+    </p>
+    <p style="font-size:1.2rem; font-style:italic; margin-top:15px; color:#0d47a1;">
+      ✨ He is truly a priest of humanity, dedicating his life to service with selflessness and dignity.
+    </p>
+  </div>
+
+  <!-- Journey Timeline -->
+  <div style="max-width:1000px; margin:auto; margin-top:60px;">
+    <h2 style="font-size:2rem; margin-bottom:2rem; color:#0d47a1; text-align:center;">Milestone Journey</h2>
+    <div style="text-align:left; line-height:1.8; font-size:1.05rem; color:#444;">
+      <p><strong>2011 – Foundation:</strong> Established Shatakshi Educational and Welfare Trust (registered under Indian Trust Act 1882, with 12-A & 80-G recognition).</p>
+      <p><strong>2012 – Antim Vidai:</strong> Initiated respectful cremation of unclaimed bodies. To date, over <strong>900+</strong> souls given dignity.</p>
+      <p><strong>2019 – Education Campaign:</strong> Launched <em>“Hathiyaar Se Kalam Tak”</em>, educating <strong>800+</strong> flood-affected children.</p>
+      <p><strong>2020 – Women Empowerment:</strong> Started <em>“Voice of Silence”</em> & <em>“Jal Pathshala”</em>, advancing girls’ rights & environmental awareness.</p>
+      <p><strong>2020 – Helpline:</strong> Rolled out a <strong>24×7 Shatakshi Helpline</strong>, connecting thousands of families to welfare schemes.</p>
+      <p><strong>2021 – COVID Relief:</strong> Ambulances, food, medicines for thousands during the pandemic.</p>
+      <p><strong>2024 – Annapurna Rasoi:</strong> “Annapurna Kitchen Service”, daily meals for 42 needy individuals in 15 villages.</p>
+    </div>
+  </div>
+
+  <!-- Flagship Initiatives -->
+  <div style="max-width:1100px; margin:auto; margin-top:70px;">
+    <h2 style="font-size:2rem; margin-bottom:2rem; color:#0d47a1; text-align:center;">Flagship Initiatives</h2>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
+
+      <!-- Antim Vidai -->
+      <div style="flex:1; min-width:280px; background:#f9f9f9; padding:20px; border-radius:12px; 
+                  box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:left;">
+        <h3 style="color:#E53935;">Antim Vidai</h3>
+        <p>Offering unclaimed bodies a dignified final farewell, treating them as our own family members.</p>
+      </div>
+
+      <!-- Hathiyaar Se Kalam Tak -->
+      <div style="flex:1; min-width:280px; background:#f9f9f9; padding:20px; border-radius:12px; 
+                  box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:left;">
+        <h3 style="color:#0d47a1;">Mission Hathiyaar Se Kalam Tak</h3>
+        <p>Transforming lives of children in flood-hit areas, replacing hopelessness with education.</p>
+      </div>
+
+      <!-- Voice of Silence -->
+      <div style="flex:1; min-width:280px; background:#f9f9f9; padding:20px; border-radius:12px; 
+                  box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:left;">
+        <h3 style="color:#6a1b9a;">Voice of Silence</h3>
+        <p>Saving young girls from child marriage and empowering them to follow their dreams.</p>
+      </div>
+
+      <!-- Annapurna Rasoi -->
+      <div style="flex:1; min-width:280px; background:#f9f9f9; padding:20px; border-radius:12px; 
+                  box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:left;">
+        <h3 style="color:#43a047;">Shatakshi Annapurna Rasoi</h3>
+        <p>Serving fresh, warm meals daily to elderly and helpless individuals in villages.</p>
+      </div>
+
+      <!-- Helpline -->
+      <div style="flex:1; min-width:280px; background:#f9f9f9; padding:20px; border-radius:12px; 
+                  box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:left;">
+        <h3 style="color:#ff9800;">Shatakshi Helpline</h3>
+        <p>A 24×7 helpline offering food, medicine, and hope at the moment of need.</p>
+      </div>
+
+      <!-- Partnership for Education -->
+      <div style="flex:1; min-width:280px; background:#f9f9f9; padding:20px; border-radius:12px; 
+                  box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:left;">
+        <h3 style="color:#009688;">Partnership for Education</h3>
+        <p>Free learning centers where girls hold notebooks and pens for the first time, igniting their aspirations.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- OUR WORK SECTION -->
+<section id="our-work" style="padding:80px 20px; background:#fff; color:#333;">
+  <div style="max-width:1100px; margin:auto; text-align:center;">
+    <h2 style="font-size:2.2rem; margin-bottom:1.5rem; color:#0d47a1;">Our Work</h2>
+    <p style="font-size:1.1rem; line-height:1.8; max-width:900px; margin:auto; margin-bottom:40px; color:#444;">
+      Shatakshi Seva Sansthan was not born from a plan, but from pain that transformed into purpose. 
+      Our founder, <strong>Mr. Naveen Ranjan Srivastava</strong>, once dreamed of becoming an IAS officer. 
+      But a personal tragedy — the loss of his younger brother and the sight of abandoned bodies left uncared for — 
+      changed the course of his life. In that moment, he chose a new path: a life dedicated to serving humanity.
+    </p>
+  </div>
+
+  <!-- Timeline -->
+  <div style="max-width:1000px; margin:auto;">
+
+    <!-- Beginning -->
+    <div style="margin-bottom:40px;">
+      <h3 style="color:#43a047; font-size:1.5rem; margin-bottom:10px;">🌱 The Beginning</h3>
+      <p style="line-height:1.7; color:#444;">
+        In 2011, in the soil of Gopalganj, Bihar, <strong>Shatakshi Educational and Welfare Trust</strong> took root. 
+        It was built not only on bricks and paper but also on tears, compassion, and empathy. 
+        What started as one man’s resolve soon became a movement.
+      </p>
+    </div>
+
+    <!-- Our Work Since Then -->
+    <div style="margin-bottom:40px;">
+      <h3 style="color:#E53935; font-size:1.5rem; margin-bottom:10px;">✨ Our Work Since Then</h3>
+      <ul style="text-align:left; line-height:1.8; color:#444; font-size:1.05rem; padding-left:20px;">
+        <li><strong>Antim Vidai (Final Farewell):</strong> Giving dignity to over <strong>900 abandoned souls</strong>, ensuring they receive respectful last rites.</li>
+        <li><strong>From Weapons to Pens:</strong> Bringing hope and education to flood-affected children, putting books back into their hands.</li>
+        <li><strong>Voice of Silence:</strong> Protecting and empowering girls, breaking chains of child marriage, and helping them dream again.</li>
+        <li><strong>Shatakshi Helpline 24×7:</strong> A single phone call at midnight can mean food, medicine, or hope delivered to a desperate family.</li>
+        <li><strong>Free Ambulance Services:</strong> The sound of our ambulance siren is not fear, but life — reaching patients when no one else could.</li>
+        <li><strong>Annapurna Rasoi:</strong> Serving <strong>42 elderly and helpless people</strong> across 15 villages every single day with hot meals.</li>
+        <li><strong>COVID Relief:</strong> When the world shut down, Shatakshi opened its arms — ambulances, rations, medicines, and meals for thousands.</li>
+      </ul>
+    </div>
+
+    <!-- Continuing Promise -->
+    <div>
+      <h3 style="color:#6a1b9a; font-size:1.5rem; margin-bottom:10px;">🌸 And We Continue…</h3>
+      <p style="line-height:1.7; color:#444;">
+        Shatakshi is not just an NGO. It is a promise — that no child will be denied education, 
+        no daughter will be silenced, no elder will sleep hungry, and no soul will be left without dignity.
+      </p>
+      <p style="font-size:1.2rem; font-style:italic; margin-top:20px; color:#0d47a1;">
+        Because for us, true satisfaction is not in name or fame, 
+        but in the smile that appears on someone’s face because of you.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- OBJECTIVES & CLAUSES -->
+<section id="objectives" style="padding:80px 20px; background:#f9f9f9; color:#333;">
+  <div style="max-width:1000px; margin:auto; text-align:center;">
+    <h2 style="font-size:2rem; margin-bottom:1.5rem; color:#0d47a1;">Our Objectives & Clauses</h2>
+    <p style="font-size:1.1rem; color:#555; margin-bottom:40px; line-height:1.8; max-width:850px; margin:auto;">
+      <strong>Shatakshi Seva Sansthan</strong> was built on compassion and duty. Every day, our team takes on the responsibility that society often ignores — 
+      a child without books, an elder without food, and an abandoned body without dignity.  
+    </p>
+  </div>
+
+  <!-- Education Section -->
+  <div style="max-width:1000px; margin:50px auto; text-align:center;">
+    <h3 style="color:#0d47a1; margin-bottom:15px;">📚 Education for Every Child</h3>
+    <p style="font-size:1.05rem; color:#444; margin-bottom:20px;">
+      We run learning drives and campaigns so that no child is forced to choose between survival and schooling. 
+      From flood-hit villages to forgotten slums, we put books and hope back into little hands.
+    </p>
+    <div style="position:relative; overflow:hidden; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.2);">
+      <div id="educationSlider" style="display:flex; transition:transform 1s ease;">
+        <!-- Add all education pics here -->
+        <img src="images/objectives/PHOTO-2025-09-11-08-47-40.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2025-09-11-08-49-29.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2025-09-11-08-47-28.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2025-09-11-08-58-15 2.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2025-09-11-08-56-37.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <!-- keep adding all education pics -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Food Section -->
+  <div style="max-width:1000px; margin:50px auto; text-align:center;">
+    <h3 style="color:#43a047; margin-bottom:15px;">🍲 Food with Dignity</h3>
+    <p style="font-size:1.05rem; color:#444; margin-bottom:20px;">
+      Our <em>Annapurna Rasoi</em> serves daily hot meals to helpless elders and hungry families. 
+      Because food is not charity — it is a right to live with dignity.
+    </p>
+    <div style="position:relative; overflow:hidden; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.2);">
+      <div id="foodSlider" style="display:flex; transition:transform 1s ease;">
+        <!-- Add all food pics here -->
+        <img src="images/objectives/PHOTO-2025-09-11-08-49-35.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2024-05-22-22-54-29.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2025-09-11-08-50-27 2.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2024-05-22-22-54-30.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2025-09-11-08-50-25 2.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <!-- keep adding all food pics -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Last Rites Section -->
+  <div style="max-width:1000px; margin:50px auto; text-align:center;">
+    <h3 style="color:#E53935; margin-bottom:15px;">⚰️ Respect in the Final Journey</h3>
+    <p style="font-size:1.05rem; color:#444; margin-bottom:20px;">
+      Through <em>Antim Vidai</em>, we cremate unclaimed and abandoned bodies as if they were our own family. 
+      More than 900 souls have been given a farewell that speaks of love, not neglect.
+    </p>
+    <div style="position:relative; overflow:hidden; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.2);">
+      <div id="lastRitesSlider" style="display:flex; transition:transform 1s ease;">
+        <!-- Add all last rites pics here -->
+        <img src="images/objectives/PHOTO-2025-09-11-08-50-25.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2025-09-11-08-56-38 2.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2025-09-11-08-58-40.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2025-09-11-08-58-15 2.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <img src="images/objectives/PHOTO-2025-09-11-08-57-17.jpg" style="width:100%; flex-shrink:0; object-fit:cover; max-height:450px;">
+        <!-- keep adding all last rites pics -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function autoSlide(sliderId, interval=4000) {
+    let currentIndex = 0;
+    const slider = document.getElementById(sliderId);
+    const totalSlides = slider.children.length;
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }, interval);
+  }
+
+  autoSlide("educationSlider");
+  autoSlide("foodSlider");
+  autoSlide("lastRitesSlider");
+</script>
+
+
+
+
+
+
+<!-- IMPACT -->
+<section id="impact" class="fade-in">
+  <div class="section-title container">
+    <h2>Impact</h2>
+    <p class="muted">Lives touched so far.</p>
+    <a href="impact.html" class="btn-secondary">See More</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="fade-in">
+  <div class="section-title container">
+    <h2>Gallery</h2>
+    <p class="muted">Snapshots of our work.</p>
+    <a href="gallery.html" class="btn-secondary">View Gallery</a>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section id="get-involved" class="fade-in">
+  <div class="section-title container">
+    <h2>Get Involved</h2>
+    <p class="muted">Volunteer, careers, membership.</p>
+    <a href="get-involved.html" class="btn-secondary">Join Us</a>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section id="donate" class="fade-in">
+  <div class="section-title container">
+    <h2>Donate</h2>
+    <p class="muted">Support our mission.</p>
+    <a href="donate.html" class="btn-primary">Donate Now</a>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="fade-in">
+  <div class="section-title container">
+    <h2>Events & Campaigns</h2>
+    <p class="muted">Our upcoming drives and workshops.</p>
+    <a href="events.html" class="btn-secondary">View All</a>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources" class="fade-in">
+  <div class="section-title container">
+    <h2>Resources</h2>
+    <p class="muted">Guides, toolkits, and blogs.</p>
+    <a href="resources.html" class="btn-secondary">See Resources</a>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section id="media" class="fade-in">
+  <div class="section-title container">
+    <h2>Media & Recognition</h2>
+    <p class="muted">Awards and press coverage.</p>
+    <a href="media.html" class="btn-secondary">Explore Media</a>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop" class="fade-in">
+  <div class="section-title container">
+    <h2>Shop</h2>
+    <p class="muted">Support us through merchandise.</p>
+    <a href="shop.html" class="btn-secondary">Visit Shop</a>
+  </div>
+</section>
+
+<!-- VOLUNTEER STORIES -->
+<section id="volunteer-stories" class="fade-in">
+  <div class="section-title container">
+    <h2>Volunteer Stories</h2>
+    <p class="muted">Experiences from changemakers.</p>
+    <a href="volunteer-stories.html" class="btn-secondary">Read Stories</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="fade-in">
+  <div class="section-title container">
+    <h2>FAQ</h2>
+    <p class="muted">Your common questions answered.</p>
+    <a href="faq.html" class="btn-secondary">Read FAQs</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade-in">
+  <div class="section-title container">
+    <h2>Contact</h2>
+    <p class="muted">Get in touch with us.</p>
+    <a href="contact.html" class="btn-secondary">Reach Out</a>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="fade-in">
+  <div class="section-title container">
+    <h2>Our Team</h2>
+    <p class="muted">The people behind the mission.</p>
+    <a href="team.html" class="btn-secondary">Meet Team</a>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust" class="fade-in">
+  <div class="section-title container">
+    <h2>Legal & Trust</h2>
+    <p class="muted">Transparency documents.</p>
+    <a href="trust.html" class="btn-secondary">View Documents</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="foot-inner">
+    <div>© 2025 Shatakshi NGO. All rights reserved.</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="about.html">About</a>
+      <a href="donate.html">Donate</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+      <a href="team.html">Team</a>
+      <a href="trust.html">Legal & Trust</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="volunteer-stories.html">Volunteer Stories</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
